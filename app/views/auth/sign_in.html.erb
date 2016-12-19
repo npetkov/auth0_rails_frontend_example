@@ -1,0 +1,21 @@
+<div id="login-container"></div>
+<script type="application/javascript">
+  (function() {
+    var clientId = '<%= "#{ENV['AUTH_CLIENT_ID']}" %>',
+        domain = '<%= "#{ENV['AUTH_DOMAIN']}" %>',
+        options = {
+          container: 'login-container',
+          auth: {
+            params: {
+              state: '<%= @sign_in_state %>',
+              scope: 'openid name email user_id scopes'
+            },
+            redirectUrl: '<%= auth_callback_url %>',
+            responseMode: 'form_post'
+          }
+        },
+        lock = new Auth0Lock(clientId, domain, options);
+
+    lock.show();
+  })();
+</script>
