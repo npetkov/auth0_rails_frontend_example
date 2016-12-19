@@ -36,3 +36,4 @@ gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.4'
 gem 'rails-assets-auth0-lock', '~> 10.7'
 gem 'jwt', '~> 1.5.2'
+gem 'rubocop', '~> 0.38.0', require: false
