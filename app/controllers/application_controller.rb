@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate!
@@ -7,33 +9,13 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate!
-    token = cookies[:auth_token]
-
-    if token.nil?
-      redirect_to auth_sign_in_path
-    else
-      begin
-        @token = verify_auth_token(token)
-      rescue JWT::DecodeError
-        render 'auth/failure', layout: false, status: 401
-      end
-    end
-  end
-
-  def verify_auth_token(token)
-    options = {
-      iss: "https://#{ENV['AUTH_DOMAIN']}/",
-      verify_iss: true,
-      aud: ENV['AUTH_CLIENT_ID'],
-      verify_aud: true,
-      verify_iat: true,
-      algorithm: 'HS256'
-    }
-
-    JWT.decode(token, ENV['AUTH_CLIENT_SECRET'], true, options)[0]
+    redirect_to '/auth/sign_in' unless session[:userinfo].present?
   end
 
   def set_csrf_token
-    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+    cookies['XSRF-TOKEN'] = {
+      value: form_authenticity_token,
+      same_site: 'Strict'
+    }
   end
 end

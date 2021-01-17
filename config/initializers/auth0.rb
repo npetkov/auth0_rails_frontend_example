@@ -1,9 +1,16 @@
+# frozen_string_literal: true
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider(
     :auth0,
-    ENV['AUTH_CLIENT_ID'],
-    ENV['AUTH_CLIENT_SECRET'],
-    ENV['AUTH_DOMAIN'],
-    callback_path: '/auth/callback'
+    Rails.application.credentials.auth_client_id,
+    Rails.application.credentials.auth_client_secret,
+    Rails.application.credentials.auth_domain,
+    callback_path: '/auth/auth0/callback',
+    authorize_params: {
+      scope: 'openid email profile'
+    }
   )
 end
+
+OmniAuth.config.request_validation_phase = OmniAuth::RailsCsrfProtection::TokenVerifier.new

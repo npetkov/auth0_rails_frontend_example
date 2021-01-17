@@ -5,7 +5,5 @@
       Inspect API token
     </a>
   </p>
-  <%= button_to :auth_sign_out do %>
-    Sign out
-  <% end %>
+  <%= button_to 'Sign out', '/auth/sign_out', method: :post %>
 </div>

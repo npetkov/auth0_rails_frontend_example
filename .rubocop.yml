@@ -1,7 +1,14 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+  NewCops: enable
+
 Metrics/ClassLength:
   Max: 150
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:

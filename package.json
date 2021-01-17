@@ -1,0 +1,26 @@
+{
+  "name": "auth0-rails-frontend-example",
+  "private": true,
+  "scripts": {
+    "build_dev": "webpack --mode development --config config/webpack/development.js --progress",
+    "build_prod": "webpack --mode production --config config/webpack/production.js --progress"
+  },
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.2.1",
+    "angular": "~1.8.2",
+    "angular-jwt": "~0.1.11",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
