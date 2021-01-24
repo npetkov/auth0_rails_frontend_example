@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_csrf_token
-    cookies['XSRF-TOKEN'] = {
+    cookies['CSRF-TOKEN'] = {
       value: form_authenticity_token,
       same_site: 'Strict'
     }

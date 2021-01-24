@@ -1,9 +1,15 @@
-<div ng-controller="IndexController as indexController">
+<div>
   <h1>Hello world!</h1>
+  <div id="error"></div>
   <p>
-    <a ng-href="https://jwt.io/?value={{indexController.apiToken}}" target="_blank">
+    <a id="inspect_token" target="_blank">
       Inspect API token
     </a>
+  </p>
+  <p>
+    <button id="api_request">
+      Make an API request
+    </button>
   </p>
   <%= button_to 'Sign out', '/auth/sign_out', method: :post %>
 </div>

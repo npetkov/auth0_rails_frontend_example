@@ -1,28 +1,19 @@
 # frozen_string_literal: true
 
-class Auth0Controller < ActionController::Base
-  layout 'application'
+class OauthController < ActionController::Base
+  layout 'oauth'
   skip_before_action :verify_authenticity_token, only: :callback
 
   def sign_in; end
 
   def sign_out
-    cookies.delete(:auth_token)
-    cookies.delete('XSRF-TOKEN')
+    cookies.delete('CSRF-TOKEN')
     reset_session
     redirect_to logout_url
   end
 
   def callback
     data = request.env['omniauth.auth']
-    token = data['credentials']['id_token']
-
-    cookies[:auth_token] = {
-      value: token,
-      same_site: 'Strict',
-      httponly: true
-    }
-
     session[:userinfo] = data
     redirect_to root_path
   end

@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   root to: 'index#show'
 
   post '/api_params', to: 'index#api_params'
+  post '/api_token', to: 'index#api_token'
 
-  get  '/auth/sign_in', to: 'auth0#sign_in'
-  post '/auth/sign_out', to: 'auth0#sign_out'
-  get  '/auth/auth0/callback', to: 'auth0#callback'
-  get  '/auth/failure', to: 'auth0#failure'
+  get  '/auth/sign_in', to: 'oauth#sign_in'
+  post '/auth/sign_out', to: 'oauth#sign_out'
+  get  '/auth/:provider/callback', to: 'oauth#callback'
+  get  '/auth/failure', to: 'oauth#failure'
 end
