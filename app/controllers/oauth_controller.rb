@@ -14,7 +14,8 @@ class OauthController < ActionController::Base
 
   def callback
     data = request.env['omniauth.auth']
-    session[:userinfo] = data
+    session[:id_token] = data['credentials']['id_token']
+    session[:api_access_token] = data['credentials']['token']
     redirect_to root_path
   end
 

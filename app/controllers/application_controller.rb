@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate!
-    redirect_to '/auth/sign_in' unless session[:userinfo].present?
+    redirect_to '/auth/sign_in' unless session[:id_token].present?
   end
 
   def set_csrf_token

@@ -8,9 +8,12 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     Rails.application.credentials.auth_domain,
     callback_path: '/auth/auth0/callback',
     authorize_params: {
-      scope: 'openid email profile'
+      audience: Rails.application.credentials.api_audience,
+      scope: 'openid email profile index:notes create:notes'
     }
   )
 end
 
-OmniAuth.config.request_validation_phase = OmniAuth::RailsCsrfProtection::TokenVerifier.new
+# Commented put as newest omniauth-auth0 version (2.5.0) locks omniauth to an
+# older version (1.9)
+# OmniAuth.config.request_validation_phase = OmniAuth::RailsCsrfProtection::TokenVerifier.new

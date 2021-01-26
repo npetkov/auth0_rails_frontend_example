@@ -77,4 +77,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   ENV['API_ORIGIN'] = 'http://localhost:3001'
+
+  HttpLog.configure do |config|
+    config.color = :green
+  end
 end
