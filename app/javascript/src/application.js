@@ -23,7 +23,7 @@ const setRequestButtonClickHandler = function () {
     const [status, data] = await ApiClient.getNotes()
 
     if (status === 'error') {
-      const [errorCode, statusText] = data
+      const [_, statusText] = data
       setErrorMessage(statusText)
     }
   })

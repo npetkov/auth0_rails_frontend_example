@@ -7,7 +7,7 @@ export const getJson = async function (url, mode, credentials, headers = {}) {
       'Accept': 'application/json, text/plain, */*',
       ...headers
     }
-  });
+  })
 
   return processResponse(response)
 }
