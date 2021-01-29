@@ -7,7 +7,6 @@ class OauthController < ActionController::Base
   def sign_in; end
 
   def sign_out
-    cookies.delete('CSRF-TOKEN')
     reset_session
     redirect_to logout_url
   end

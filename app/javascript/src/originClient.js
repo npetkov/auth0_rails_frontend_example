@@ -16,19 +16,12 @@ export const apiToken = async function () {
   return postJson('/api_token')
 }
 
-const getCookie = function (name) {
-  const cookieString = document.cookie + "; ''=''"
-  const map = new Map(
-    cookieString
-      .split(';')
-      .map(entry => entry.split('=')
-      .map(entry => entry.trim()))
-  )
-  return map.get(name)
+const readMeta = function (name) {
+  return document.querySelector(`meta[name="${name}"]`).getAttribute('content')
 }
 
 const csrfHeader = function () {
   return {
-    'X-CSRF-TOKEN': getCookie('CSRF-TOKEN')
+    'X-CSRF-TOKEN': readMeta('csrf-token')
   }
 }
