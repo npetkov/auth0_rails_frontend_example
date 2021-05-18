@@ -14,6 +14,4 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   )
 end
 
-# Commented put as newest omniauth-auth0 version (2.5.0) locks omniauth to an
-# older version (1.9)
-# OmniAuth.config.request_validation_phase = OmniAuth::RailsCsrfProtection::TokenVerifier.new
+OmniAuth.config.request_validation_phase = OmniAuth::RailsCsrfProtection::TokenVerifier.new

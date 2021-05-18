@@ -59,7 +59,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'httplog', '~> 1.4.3'
 gem 'jwt', '~> 2.2.2'
-gem 'omniauth-auth0', '~> 2.5.0'
-gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem 'omniauth-auth0', '~> 3.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'rubocop', '~> 1.8', require: false
 gem 'rubocop-rails', '~>2.9', require: false
