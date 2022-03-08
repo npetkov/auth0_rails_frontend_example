@@ -8,7 +8,7 @@ class OauthController < ActionController::Base
 
   def sign_out
     reset_session
-    redirect_to logout_url
+    redirect_to logout_url, allow_other_host: true
   end
 
   def callback
